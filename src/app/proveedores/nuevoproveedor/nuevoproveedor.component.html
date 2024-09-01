@@ -1,0 +1,37 @@
+<div class="card my-5">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <h3 class="mb-0">
+            {{titulo}} 
+            <!-- Interpolacion 
+             envia variable desde ts hacia html
+             -->
+        </h3>
+      </div>
+      <div class="row">
+      <div class="form-group mb-3">
+        <label class="form-label" for="Nombre_Empresa">Nombre de la Empresa</label>
+        <input type="text" class="form-control" [value]="titulo" [(ngModel)] = "Nombre_Empresa" placeholder="Nombre de la Empresa" />
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="Direccion">Dirección de la Empresa</label>
+        <input type="text" class="form-control" [(ngModel)] = "Direccion" id="password" placeholder="Dirección de la Empresa" />
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="Telefono">Telefono de la Empresa</label>
+        <input type="email" class="form-control" [(ngModel)] = "Telefono" />
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="Contacto_Empresa">Nombre Contacto de la Empresa</label>
+        <input type="text" class="form-control" [(ngModel)] = "Contacto_Empresa" />
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="Teleofno_Contacto">Telefono de Contacto</label>
+        <input type="text" class="form-control" [(ngModel)] = "Teleofno_Contacto" />
+      </div>
+     
+      <div class="d-grid mt-3">
+        <button type="button" (click)="grabar()" class="btn btn-primary">Create Account</button>
+      </div>
+    </div>
+  </div>

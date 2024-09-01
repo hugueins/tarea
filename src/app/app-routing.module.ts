@@ -60,7 +60,7 @@ const routes: Routes = [
         loadComponent: () => import('./clientes/nuevocliente/nuevocliente.component').then((m)=>NuevoclienteComponent),
       },
       {
-        path: 'editarcliente/:idCliente',
+        path: 'editarcliente/:idClientes',
         loadComponent: () => import('./clientes/nuevocliente/nuevocliente.component').then((m)=>NuevoclienteComponent),
       }
     ]

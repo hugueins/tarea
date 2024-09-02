@@ -5,10 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 // Project import
 import { AdminComponent } from './theme/layouts/admin-layout/admin-layout.component';
 import { GuestComponent } from './theme/layouts/guest/guest.component';
-import {ProveedoresComponent} from './proveedores/proveedores.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { NuevoproveedorComponent } from './proveedores/nuevoproveedor/nuevoproveedor.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { NuevoclienteComponent } from './clientes/nuevocliente/nuevocliente.component';
+import { FacturasComponent } from './facturas/facturas.component';
+import { NuevafacturaComponent } from './facturas/nuevafactura/nuevafactura.component';
 
 const routes: Routes = [
   {
@@ -39,30 +41,44 @@ const routes: Routes = [
       //TODO:ProveedorComponente_2255_3108
       {
         path: 'proveedores',
-        loadComponent: () => import('./proveedores/proveedores.component').then((m)=>ProveedoresComponent),
+        loadComponent: () => import('./proveedores/proveedores.component').then((m) => ProveedoresComponent)
       },
       //TODO:nuevoProveedorComponente_1020109
       {
         path: 'nuevoproveedor',
-        loadComponent: () => import('./proveedores/nuevoproveedor/nuevoproveedor.component').then((m)=>NuevoproveedorComponent),
+        loadComponent: () => import('./proveedores/nuevoproveedor/nuevoproveedor.component').then((m) => NuevoproveedorComponent)
       },
-        {
+      {
         path: 'editarproveedor/:id',
-        loadComponent: () => import('./proveedores/nuevoproveedor/nuevoproveedor.component').then((m)=>NuevoproveedorComponent),
+        loadComponent: () => import('./proveedores/nuevoproveedor/nuevoproveedor.component').then((m) => NuevoproveedorComponent)
       },
-       //TODO:Cliesntescompomnente_010920241521
+      //TODO:Cliesntescompomnente_010920241521
       {
         path: 'clientes',
-        loadComponent: () => import('./clientes/clientes.component').then((m)=>ClientesComponent),
+        loadComponent: () => import('./clientes/clientes.component').then((m) => ClientesComponent)
       },
       {
         path: 'nuevocliente',
-        loadComponent: () => import('./clientes/nuevocliente/nuevocliente.component').then((m)=>NuevoclienteComponent),
+        loadComponent: () => import('./clientes/nuevocliente/nuevocliente.component').then((m) => NuevoclienteComponent)
       },
       {
         path: 'editarcliente/:idClientes',
-        loadComponent: () => import('./clientes/nuevocliente/nuevocliente.component').then((m)=>NuevoclienteComponent),
-      }
+        loadComponent: () => import('./clientes/nuevocliente/nuevocliente.component').then((m) => NuevoclienteComponent)
+      },
+        //TODO:facturas
+        {
+          path: 'facturas',
+          loadComponent: () => import('./facturas/facturas.component').then((m) => FacturasComponent)
+        },
+        {
+          path: 'nuevafactura',
+          loadComponent: () => import('./facturas/nuevafactura/nuevafactura.component').then((m) => NuevafacturaComponent)
+        },
+        {
+          path: 'editarfactura/:idFacturas',
+          loadComponent: () => import('./facturas/nuevafactura/nuevafactura.component').then((m) => NuevafacturaComponent)
+        }
+
     ]
   },
   {

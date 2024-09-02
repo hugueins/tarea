@@ -78,7 +78,7 @@ cargarUno (){
       Fecha: this.frm_factura.get('Fecha')?.value,
       Sub_total: this.frm_factura.get('Sub_total')?.value,
       Sub_total_iva: this.frm_factura.get('Sub_total_iva')?.value,
-      Valor_IVA: this.frm_factura.get('Valor_IVA')?.value,
+      Valor_IVA: this.frm_factura.get('Valor_IVA').value,
       Clientes_idClientes: this.frm_factura.get('Clientes_idClientes')?.value
     };
 

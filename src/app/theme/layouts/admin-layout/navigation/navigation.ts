@@ -95,6 +95,30 @@ export const NavigationItems: NavigationItem[] = [
         icon: 'bg-colors'
       },
       {
+        id: 'productos',
+        title: 'Productos',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/productos',
+        icon: 'bg-colors'
+      },
+      {
+        id:'unidad_medida',
+        title:'Unidad de Medida',
+        type:'item',
+        classes:'nav-item',
+        url:'/unidadmedida',
+        icon:'bg-colors',
+      },
+      {
+        id:'kardex',
+        title:'Kardex',
+        type:'item',
+        classes:'nav-item',
+        url:'/kardex',
+        icon:'bg-colors',
+      },
+      {
         id: 'tabler',
         title: 'Tabler',
         type: 'item',

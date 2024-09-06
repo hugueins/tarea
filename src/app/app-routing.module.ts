@@ -11,6 +11,8 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { NuevoclienteComponent } from './clientes/nuevocliente/nuevocliente.component';
 import { FacturasComponent } from './facturas/facturas.component';
 import { NuevafacturaComponent } from './facturas/nuevafactura/nuevafactura.component';
+import { UnidadmedidaComponent } from './unidadmedida/unidadmedida.component';
+import { NuevaunidadmedidaComponent } from './unidadmedida/nuevaunidadmedida/nuevaunidadmedida.component';
 
 const routes: Routes = [
   {
@@ -77,6 +79,19 @@ const routes: Routes = [
         {
           path: 'editarfactura/:idFacturas',
           loadComponent: () => import('./facturas/nuevafactura/nuevafactura.component').then((m) => NuevafacturaComponent)
+        },
+        //TODO:UnidadMedida
+        {
+          path: 'unidadmedida',
+          loadComponent: () => import('./unidadmedida/unidadmedida.component').then((m) => UnidadmedidaComponent)
+        },
+        {
+          path: 'nuevaunidadmedida',
+          loadComponent: () => import('./unidadmedida/nuevaunidadmedida/nuevaunidadmedida.component').then((m) => NuevaunidadmedidaComponent)
+        },
+        {
+          path: 'editarunidadmedida/:idUnidad_Medida',
+          loadComponent: () => import('./unidadmedida/nuevaunidadmedida/nuevaunidadmedida.component').then((m) => NuevaunidadmedidaComponent)
         }
 
     ]

@@ -76,7 +76,7 @@ export const NavigationItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/proveedores',
-        icon: ''
+        icon: 'bg-colors'
       },
       {
         id: 'clientes',
@@ -110,6 +110,16 @@ export const NavigationItems: NavigationItem[] = [
         url:'/unidadmedida',
         icon:'bg-colors',
       },
+      
+      {
+        id:'Usuarios',
+        title:'Usuarios',
+        type:'item',
+        classes:'nav-item',
+        url:'/usuarios',
+        icon:'bg-colors',
+      },
+      
       {
         id:'kardex',
         title:'Kardex',

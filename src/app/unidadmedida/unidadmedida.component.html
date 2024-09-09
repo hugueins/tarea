@@ -44,3 +44,39 @@
       </app-card>
     </div>
   </div>
+
+<!-- <div class="card">
+  <div class="card-header">
+    <h5>{{ title }}</h5>
+  </div>
+  <div class="card-body table-border-style">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Detalle</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let unidad of listaUnidadMedida">
+            <td>{{ unidad.idUnidad_Medida }}</td>
+            <td>{{ unidad.Detalle }}</td>
+            <td>
+              {{ unidad.Tipo === '0' ? 'Presentación' : 
+                 unidad.Tipo === '1' ? 'Unidad de Medida' : 
+                 unidad.Tipo === '2' ? 'Factor de Conversión' : 'Desconocido' }}
+            </td>
+            <td>
+              <button class="btn btn-primary btn-sm me-2" [routerLink]="['/nuevaunidadmedida', unidad.idUnidad_Medida]">Editar</button>
+              <button class="btn btn-danger btn-sm" (click)="eliminar(unidad.idUnidad_Medida)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+-->

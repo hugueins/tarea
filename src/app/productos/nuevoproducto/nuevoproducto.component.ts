@@ -10,6 +10,8 @@ import {IvaService} from 'src/app/Services/iva.service'
 import { IProducto } from 'src/app/Interfaces/iproducto';
 import { privateDecrypt, publicDecrypt } from 'crypto';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { ProductoService } from 'src/app/Services/productos.service';
 
 @Component({
   selector: 'app-nuevoproducto',
@@ -25,32 +27,54 @@ export class NuevoproductoComponent implements OnInit {
   listaIva:Iiva []=[];
   frm_Producto: FormGroup;
   idProductos: number=0;
-  prodcutoServicio: any;
+  
   constructor(
     private uniadaServicio: UnidadmedidaService,
     private fb: FormBuilder,
     private proveedoreServicio: ProveedorService,
     private ivaServicio:IvaService,
     private navegacion: Router,
-    private ruta: ActivatedRoute
+    private ruta: ActivatedRoute,
+    private productoServicio: ProductoService
     ) {}
   ngOnInit(): void {
     this.uniadaServicio.todos().subscribe((data) => (this.listaUnidadMedida = data));
     this.proveedoreServicio.todos().subscribe((data) => (this.listaProveedores = data));
     this.ivaServicio.todos().subscribe((data) => (this.listaIva = data));
     this.crearFormulario();
+    this.idProductos = parseInt(this.ruta.snapshot.paramMap.get('idProductos'));
+
+    if (this.idProductos > 0) {
+      this.productoServicio.uno(this.idProductos).subscribe((producto) => {
+
+        console.log(producto);
+        this.frm_Producto.controls["Codigo_Barras"].setValue(producto.Codigo_Barras),
+        this.frm_Producto.controls["Nombre_Producto"].setValue(producto.Nombre_Producto),
+        this.frm_Producto.controls["Graba_IVA"].setValue(producto.Graba_IVA),
+        this.frm_Producto.controls["Unidad_Medida_idUnidad_Medida"].setValue(producto.Unidad_Medida_idUnidad_Medida), 
+        this.frm_Producto.controls["IVA_idIVA"].setValue(producto.IVA_idIVA),
+        this.frm_Producto.controls["Cantidad"].setValue(producto.Cantidad),
+        this.frm_Producto.controls["Valor_Compra"].setValue(producto.Valor_Compra),
+        this.frm_Producto.controls["Valor_Venta"].setValue(producto.Valor_Venta),
+        this.frm_Producto.controls["Proveedores_idProveedores"].setValue(producto.Proveedores_idProveedores),
+        this.frm_Producto.controls["idKardex"].setValue(producto.idKardex)
+        this.titulo = 'Actualizar Proveedor';
+      });
+    }
   }
   crearFormulario() {
-     this.frm_Producto = new FormGroup({
+   
+    this.frm_Producto = new FormGroup({
       Codigo_Barras: new FormControl('', Validators.required),
       Nombre_Producto: new FormControl('', Validators.required),
       Graba_IVA: new FormControl('', Validators.required),
-      Unidad_Medida_idProductos: new FormControl('', Validators.required),
+      Unidad_Medida_idUnidad_Medida: new FormControl('', Validators.required),
       IVA_idIVA: new FormControl('', Validators.required),
       Cantidad: new FormControl('', [Validators.required, Validators.min(1)]),
       Valor_Compra: new FormControl('', [Validators.required, Validators.min(0)]),
       Valor_Venta: new FormControl('', [Validators.required, Validators.min(0)]),
-      Proveedores_idProveedores: new FormControl('', Validators.required)
+      Proveedores_idProveedores: new FormControl('', Validators.required),
+      idKardex:new FormControl('')
     });
   }
   grabar (){
@@ -66,17 +90,25 @@ export class NuevoproductoComponent implements OnInit {
     Valor_Venta: this.frm_Producto.controls["Valor_Venta"].value,
     Proveedores_idProveedores: this.frm_Producto.controls["Proveedores_idProveedores"].value
     };
-  
-  if (this.idProductos==0 || isNaN(this.idProductos)) {
-    this.prodcutoServicio.insertar(iproducto).subscribe((respuesta)=> {
-  //parseInt (respuesta)> 1 ? alert ("Grabado con exito"): alert ("Error al grabar");
-  if (parseInt (respuesta) > 1 ){
-    alert ("Grabado con exito");
-    this.navegacion.navigate(['/productos']);
-  }  else{
-    alert ("Error al grabar");
+  console.log(iproducto);
+    if (this.idProductos == 0 || isNaN(this.idProductos) )
+      {
+
+      this.productoServicio.insertar(iproducto).subscribe((x) => {
+        Swal.fire('Exito', 'El producto se grabo con exito', 'success');
+        this.navegacion.navigate(['/productos']);
+      });
+    } 
+    else 
+    {
+      iproducto.idProductos = this.idProductos;
+      iproducto.idKardex=this.frm_Producto.controls["idKardex"].value;
+ 
+      this.productoServicio.actualizar(iproducto).subscribe((x) => {
+        
+        Swal.fire('Exito', 'El producto se modifico con exito', 'success');
+        this.navegacion.navigate(['/productos']);
+      });
     }
-  });
-  }
   }
 }

@@ -19,3 +19,4 @@
     Unidad_Medida_idUnidad_Medida?: number;
     Proveedores_idProveedores?: number;
   }
+  ////TODO: DEBER OK

@@ -40,12 +40,7 @@ export class FacturasComponent implements OnInit {
         });
       }
     });
-
-
-
-
   }
-
   cargarTodos()
   {
 
@@ -53,5 +48,17 @@ export class FacturasComponent implements OnInit {
       this.listafacturas = data;
     });
   }
+  imprimirFactura(idFactura: number) {
+    
+    if (idFactura > 0) {
+      Swal.fire('Facturas', 'Usted va a Imprimir la factura($idfactura).', 'success');
+      window.open(`http://localhost/tarea/sexto/Proyectos/03MVC/reports/facturas.report.php?id=${idFactura}`, '_blank');
+      
+    } else {
+      alert('Por favor, guarde la factura antes de intentar imprimirla.');
+    }
+  }
 }
+
+
 //TODO: DEBER OK

@@ -11,6 +11,8 @@ import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NuevoproveedorComponent } from './proveedores/nuevoproveedor/nuevoproveedor.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +24,8 @@ import { NuevoproveedorComponent } from './proveedores/nuevoproveedor/nuevoprove
      HttpClientModule,
      FormsModule,
      ReactiveFormsModule,
-     NuevoproveedorComponent 
+     NuevoproveedorComponent,
+     NgbModule 
     ],
   bootstrap: [AppComponent]
 })
